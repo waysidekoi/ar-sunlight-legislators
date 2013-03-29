@@ -5,6 +5,10 @@ class SunlightLegislatorsImporter
   def self.import(filename)
     csv = CSV.new(File.open(filename), :headers => true)
     csv.each do |row|
+      # legislator = row.to_hash
+      
+      # legislator[:phone].gsub!(/\D*/, "") unless legislator[:phone] == nil || legislator[:phone].length == 10
+      
       Legislator.create(row.to_hash)
       # row.each do |field, value|
       #   # TODO: begin
